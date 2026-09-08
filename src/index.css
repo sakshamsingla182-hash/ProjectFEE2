@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink dark:bg-ink dark:text-cream font-body antialiased;
+  }
+  ::selection {
+    @apply bg-saffron-300/60;
+  }
+}
+
+@layer components {
+  .vv-select {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-saffron-400 focus:ring-2 focus:ring-saffron-400/30 dark:border-cream/20 dark:bg-ink-softer dark:text-cream;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: vv-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-float {
+    animation: vv-float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes vv-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vv-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* thin, unobtrusive scrollbars for drawers */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(18, 18, 28, 0.2) transparent;
+}
