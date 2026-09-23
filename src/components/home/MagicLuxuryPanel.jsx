@@ -60,13 +60,10 @@ export default function MagicLuxuryPanel({ mode, open, onClose }) {
       }
     }
     return best
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode])
 
   if (!open || !result) return null
-
   const { city, estimate } = result
-
   const handleAdd = () => {
     addItem({
       id: `${mode}-trip-${city.stateId}-${city.id}`,

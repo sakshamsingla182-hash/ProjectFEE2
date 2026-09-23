@@ -1,9 +1,7 @@
 import { useTheme } from '../../context/ThemeContext.jsx'
-
 export default function ThemeToggle({ className = '' }) {
   const { theme, toggleTheme } = useTheme()
   const isDark = theme === 'dark'
-
   return (
     <button
       type="button"

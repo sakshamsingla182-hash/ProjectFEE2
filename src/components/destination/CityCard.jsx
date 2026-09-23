@@ -62,3 +62,5 @@ export default function CityCard({ city, stateId, accent, compact = false }) {
     </div>
   )
 }
+
+//Wishlist is needed by multiple components, so Context provides a shared global wishlist state without prop drilling.

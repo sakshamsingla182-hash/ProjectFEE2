@@ -19,6 +19,7 @@ const PRINCIPLES = [
 export default function About() {
   return (
     <div>
+      {/* Hero Section */}
       <section className="relative overflow-hidden bg-ink">
         <div className="absolute inset-0 opacity-70">
           <SceneArt scene="heritage" accent="peacock" seed="taj-mahal-india" className="h-full w-full" />
@@ -36,40 +37,59 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-16">
-        <h2 className="font-display text-2xl text-ink dark:text-cream">Why Voyage Verse exists</h2>
-        <p className="mt-4 leading-relaxed text-ink/70 dark:text-cream/70">
-          Most trip planning in India starts the same way: a dozen browser tabs, a handful of blog posts of wildly
-          differing quality, and a spreadsheet nobody quite finishes. Voyage Verse tries to shrink that down to one
-          place — a consistent, comparable set of details for 75 cities across 15 states, plus a calculator that
-          turns "roughly how much will this cost" into an actual number.
-        </p>
-        <p className="mt-4 leading-relaxed text-ink/70 dark:text-cream/70">
-          It\u2019s not a booking platform. There\u2019s no live inventory, no payment processing, and no itinerary
-          builder — deliberately. The goal is the research and budgeting phase of a trip, done well, with a Wishlist
-          for the places you\u2019re still deciding on and a Trip Bucket for the ones you\u2019ve settled on.
-        </p>
+      {/* Main Content Section */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        {/* 2-Column Split: Text on Left, Portrait Image on Right */}
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          <div>
+            <h2 className="font-display text-3xl text-ink dark:text-cream">Why Voyage Verse exists</h2>
+            <p className="mt-4 leading-relaxed text-ink/70 dark:text-cream/70">
+              Most trip planning in India starts the same way: a dozen browser tabs, a handful of blog posts of wildly
+              differing quality, and a spreadsheet nobody quite finishes. Voyage Verse tries to shrink that down to one
+              place — a consistent, comparable set of details for 75 cities across 15 states, plus a calculator that
+              turns "roughly how much will this cost" into an actual number.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink/70 dark:text-cream/70">
+              It’s not a booking platform. There’s no live inventory, no payment processing, and no itinerary
+              builder — deliberately. The goal is the research and budgeting phase of a trip, done well, with a Wishlist
+              for the places you’re still deciding on and a Trip Bucket for the ones you’ve settled on.
+            </p>
+          </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-ink/10 dark:border-cream/10">
-          <div className="h-64 sm:h-80">
-            <SceneArt scene="urban" accent="saffron" seed="india-gate-delhi" className="h-full w-full" />
+          <div className="overflow-hidden rounded-3xl border border-ink/10 shadow-2xl dark:border-cream/10">
+            <div className="aspect-[4/5] w-full">
+              <SceneArt
+                scene="urban"
+                accent="saffron"
+                seed="india-gate-delhi"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+        {/* Guiding Principles Grid */}
+        <div className="mt-16 grid gap-5 sm:grid-cols-3">
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-ink/10 p-5 dark:border-cream/10">
-              <h3 className="font-display text-base text-ink dark:text-cream">{p.title}</h3>
+            <div key={p.title} className="rounded-2xl border border-ink/10 p-6 dark:border-cream/10">
+              <h3 className="font-display text-base font-semibold text-ink dark:text-cream">{p.title}</h3>
               <p className="mt-2 text-sm text-ink/60 dark:text-cream/60">{p.body}</p>
             </div>
           ))}
         </div>
 
+        {/* Action Links */}
         <div className="mt-12 flex flex-wrap gap-3">
-          <Link to="/explore" className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-cream dark:bg-cream dark:text-ink">
+          <Link
+            to="/explore"
+            className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-cream transition hover:opacity-90 dark:bg-cream dark:text-ink"
+          >
             Explore the 15 states
           </Link>
-          <Link to="/faq" className="rounded-full border border-ink/15 px-6 py-3 text-sm font-medium text-ink dark:border-cream/20 dark:text-cream">
+          <Link
+            to="/faq"
+            className="rounded-full border border-ink/15 px-6 py-3 text-sm font-medium text-ink transition hover:bg-ink/5 dark:border-cream/20 dark:text-cream dark:hover:bg-cream/5"
+          >
             Read the FAQ
           </Link>
         </div>

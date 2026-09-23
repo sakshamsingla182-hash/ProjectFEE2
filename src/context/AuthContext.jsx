@@ -2,9 +2,6 @@ import { createContext, useContext, useMemo, useCallback } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 const AuthContext = createContext(null)
-
-// Demo-only authentication. Accounts are stored in localStorage on this device;
-// nothing is sent to a server. Good enough to gate the Trip Planner for the syllabus demo.
 export function AuthProvider({ children }) {
   const [users, setUsers] = useLocalStorage('vv-users', [])
   const [currentUser, setCurrentUser] = useLocalStorage('vv-current-user', null)

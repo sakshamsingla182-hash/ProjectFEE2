@@ -10,7 +10,7 @@ export default function NotFound() {
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
       <div className="relative text-center">
         <p className="font-display text-8xl font-medium text-cream sm:text-9xl">404</p>
-        <p className="mt-4 text-lg text-cream/70">This road doesn\u2019t lead anywhere on the map yet.</p>
+        <p className="mt-4 text-lg text-cream/70">This road doesnt lead anywhere on the map yet.</p>
         <Link
           to="/"
           className="mt-8 inline-block rounded-full bg-cream px-7 py-3.5 text-sm font-semibold text-ink"

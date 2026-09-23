@@ -11,7 +11,7 @@ export default function Hero({ onMagic, onLuxury }) {
   const handleSubmit = (value) => {
     navigate(value ? `/explore?q=${encodeURIComponent(value)}` : '/explore')
   }
-
+  
   return (
     <section className="relative overflow-hidden bg-ink">
       <div className="absolute inset-0 opacity-70">

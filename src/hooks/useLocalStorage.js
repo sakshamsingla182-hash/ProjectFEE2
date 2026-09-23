@@ -1,9 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-/**
- * Persists a piece of state to localStorage under `key`.
- * Falls back to `initialValue` when nothing is stored yet or JSON parsing fails.
- */
+
 export function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     try {
