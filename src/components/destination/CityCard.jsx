@@ -2,17 +2,33 @@ import { Link } from 'react-router-dom'
 import SceneArt from '../common/SceneArt.jsx'
 import { Pill } from '../common/Badges.jsx'
 import { useWishlist } from '../../context/WishlistContext.jsx'
+import { useUnsplashImage } from '../../hooks/useUnsplashImage.js'
+import { getDestinationImage } from '../../data/destinationImages.js'
 
 export default function CityCard({ city, stateId, accent, compact = false }) {
   const { isWishlisted, toggleWishlist } = useWishlist()
   const wishId = `city-${stateId}-${city.id}`
   const saved = isWishlisted(wishId)
 
+  // fetch real Unsplash photo; fallback to SceneArt
+  const query = getDestinationImage(city.id)
+  const { url: photoUrl, loading } = useUnsplashImage(query)
+
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm transition-shadow hover:shadow-lift dark:border-cream/10 dark:bg-ink-soft">
       <Link to={`/destination/${stateId}/${city.id}`} className="block">
         <div className={`relative overflow-hidden ${compact ? 'aspect-[4/3]' : 'aspect-[16/11]'}`}>
-          <SceneArt scene={city.scene} accent={accent} seed={city.id} className="h-full w-full transition-transform duration-500 group-hover:scale-105" />
+          {photoUrl ? (
+            <img
+              src={photoUrl}
+              alt={city.name}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : loading ? (
+            <div className="h-full w-full animate-pulse bg-ink/10 dark:bg-cream/10" />
+          ) : (
+            <SceneArt scene={city.scene} accent={accent} seed={city.id} className="h-full w-full transition-transform duration-500 group-hover:scale-105" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
           <span className="absolute bottom-3 left-4 font-display text-lg font-medium text-cream">{city.name}</span>
         </div>
@@ -62,5 +78,3 @@ export default function CityCard({ city, stateId, accent, compact = false }) {
     </div>
   )
 }
-
-//Wishlist is needed by multiple components, so Context provides a shared global wishlist state without prop drilling.
