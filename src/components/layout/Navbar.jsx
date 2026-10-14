@@ -137,6 +137,7 @@ import MobileMenu from './MobileMenu.jsx'
 const LINKS = [
   { to: '/', label: 'Home' },
   { to: '/explore', label: 'Explore India' },
+  { to: '/adventure', label: 'Adventure' },
   { to: '/flights', label: 'Flights' },
   { to: '/hotels', label: 'Hotels' },
   { to: '/trip-planner', label: 'Trip Planner' },

@@ -90,6 +90,7 @@ import ProtectedRoute from './components/common/ProtectedRoute.jsx'
 
 import Home from './pages/Home.jsx'
 import Explore from './pages/Explore.jsx'
+import Adventure from './pages/Adventure.jsx'
 import StateCities from './pages/StateCities.jsx'
 import CityDetail from './pages/CityDetail.jsx'
 import Flights from './pages/Flights.jsx'
@@ -125,6 +126,7 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/explore" element={<Explore />} />
+                  <Route path="/adventure" element={<Adventure />} />
                   <Route path="/flights" element={<Flights />} />
                   <Route path="/hotels" element={<Hotels />} />
                   <Route path="/hotel-bookings" element={<HotelBookings />} />
