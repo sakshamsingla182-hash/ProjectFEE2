@@ -3,18 +3,35 @@ import { getState } from '../data/destinations.js'
 import SceneArt from '../components/common/SceneArt.jsx'
 import CityCard from '../components/destination/CityCard.jsx'
 import { Pill } from '../components/common/Badges.jsx'
+import { useUnsplashImage } from '../hooks/useUnsplashImage.js'
+import { getDestinationImage } from '../data/destinationImages.js'
 
 export default function StateCities() {
   const { stateId } = useParams()
   const state = getState(stateId)
 
+  // fetch real cover photo for this state
+  const query = getDestinationImage(stateId)
+  const { url: coverPhoto, loading } = useUnsplashImage(query)
+
   if (!state) return <Navigate to="/404" replace />
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-ink">
+      <section className="relative overflow-hidden bg-ink" style={{ minHeight: '340px' }}>
+        {/* Cover image layer */}
         <div className="absolute inset-0 opacity-80">
-          <SceneArt scene={state.scene} accent={state.accent} seed={state.id} className="h-full w-full" />
+          {coverPhoto ? (
+            <img
+              src={coverPhoto}
+              alt={state.name}
+              className="h-full w-full object-cover"
+            />
+          ) : loading ? (
+            <div className="h-full w-full animate-pulse bg-ink/40" />
+          ) : (
+            <SceneArt scene={state.scene} accent={state.accent} seed={state.id} className="h-full w-full" />
+          )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/10" />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 sm:pt-28">
